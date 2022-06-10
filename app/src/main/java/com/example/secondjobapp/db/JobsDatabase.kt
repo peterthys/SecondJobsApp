@@ -10,4 +10,4 @@ import androidx.room.RoomDatabase
 abstract class JobsDatabase : RoomDatabase() {
 
 
-}g
+}
