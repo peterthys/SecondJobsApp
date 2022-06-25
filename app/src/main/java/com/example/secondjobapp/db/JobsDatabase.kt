@@ -9,5 +9,6 @@ import androidx.room.RoomDatabase
 )
 abstract class JobsDatabase : RoomDatabase() {
 
+    abstract fun getJobsDao():JobsDAO
 
 }
