@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/activity_main.xml" value="0.14764492753623187" />
+        <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/content_main.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/fragment_clients.xml" value="0.32864583333333336" />
         <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/fragment_gallery.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/fragment_home.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/fragment_job.xml" value="0.33489583333333334" />
         <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/layout/nav_header_main.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
+        <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24166666666666667" />
+        <entry key="..\:/Users/peter/Documents/SecondJobApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24166666666666667" />
       </map>
     </option>
   </component>

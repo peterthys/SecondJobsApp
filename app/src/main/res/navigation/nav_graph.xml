@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/jobFragment">
+
+    <fragment
+        android:id="@+id/clientsFragment"
+        android:name="com.example.secondjobapp.ui.fragments.ClientsFragment"
+        android:label="ClientsFragment" >
+        <action
+            android:id="@+id/action_clientsFragment_to_jobFragment"
+            app:destination="@id/jobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobFragment"
+        android:name="com.example.secondjobapp.ui.fragments.JobFragment"
+        android:label="JobFragment" >
+        <action
+            android:id="@+id/action_jobFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_jobFragment_to_overviewFragment"
+            app:destination="@id/overviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.example.secondjobapp.ui.fragments.OverviewFragment"
+        android:label="OverviewFragment" >
+        <action
+            android:id="@+id/action_overviewFragment_to_jobFragment"
+            app:destination="@id/jobFragment" />
+    </fragment>
+</navigation>
