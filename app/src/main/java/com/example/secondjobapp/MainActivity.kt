@@ -16,7 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 
 import com.example.secondjobapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+
+@AndroidEntryPoint
 
 class MainActivity() : AppCompatActivity() {
 

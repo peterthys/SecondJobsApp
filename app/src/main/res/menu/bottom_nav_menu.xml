@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:id="@+id/jobFragment"
     android:title="Jobs"
-    android:icon="@drawable/ic_job_icon"/>
+    android:icon="@drawable/ic_job_24"/>
 
     <item android:id="@+id/overviewFragment"
         android:title="Overview Jobs"
