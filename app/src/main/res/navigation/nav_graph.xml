@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/jobFragment">
 
@@ -11,6 +12,9 @@
         <action
             android:id="@+id/action_clientsFragment_to_jobFragment"
             app:destination="@id/jobFragment" />
+        <action
+            android:id="@+id/action_clientsFragment_to_newClient"
+            app:destination="@id/newClient" />
     </fragment>
     <fragment
         android:id="@+id/jobFragment"
@@ -30,5 +34,14 @@
         <action
             android:id="@+id/action_overviewFragment_to_jobFragment"
             app:destination="@id/jobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newClient"
+        android:name="com.example.secondjobapp.NewClient"
+        android:label="fragment_new_client"
+        tools:layout="@layout/fragment_new_client" >
+        <action
+            android:id="@+id/action_newClient_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
     </fragment>
 </navigation>
