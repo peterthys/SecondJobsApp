@@ -16,20 +16,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SecondJobApp" >
-        <activity
-            android:name=".navigation"
-            android:exported="false"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/Theme.SecondJobApp.NoActionBar" />
+<!--        <activity-->
+<!--            android:name=".navigation"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_navigation"-->
+<!--            android:theme="@style/Theme.SecondJobApp.NoActionBar" />-->
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_main"-->
+<!--            android:theme="@style/Theme.SecondJobApp.NoActionBar" />-->
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.SecondJobApp.NoActionBar" />
-        <activity
-            android:name=".ui.MainActivity"
             android:exported="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.SecondJobApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,6 +46,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
     </application>
 
 </manifest>
