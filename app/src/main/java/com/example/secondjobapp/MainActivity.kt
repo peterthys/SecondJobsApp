@@ -54,16 +54,15 @@ class MainActivity() : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
-        navHostFragment.findNavController()
-            .addOnDestinationChangedListener { _, destination, _ ->
+        navHostFragment.findNavController().addOnDestinationChangedListener { _, destination, _ ->
                 navHostFragment.findNavController()
             }
 
 
-  //      var clientList = mutableListOf(
-  //          Client("Peter", "Putte", "032"),
-  //          Client("Wouter", "Heultje", "025")
-  //      )
+        //      var clientList = mutableListOf(
+        //          Client("Peter", "Putte", "032"),
+        //          Client("Wouter", "Heultje", "025")
+        //      )
 //        val adaptor = ClientsAdaptor(clientList)
 //        rv_clients.adapter = adaptor
 //        rv_clients.layoutManager = LinearLayoutManager(this)
