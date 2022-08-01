@@ -55,28 +55,12 @@ class JobFragment : Fragment(R.layout.fragment_job) {
             val hours = minutes / 60
             val days = hours / 24
 
-            text_result.text = "total job is ${hours}:${minutes}:${seconds}"
+            text_result.text = "total job is ${hours} : ${minutes} : ${seconds}"
 
 
         }
 
 
-
-     //   text_result.text = "23"
-//        val formatterTime = SimpleDateFormat("HH:mm:ss")
-//        val startTime = formatterTime.format(System.currentTimeMillis())
-//        Long currentTime = System.currentTimeMillis();
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
-//        Date date = new Date(currentTime);
-//        String time = simpleDateFormat.format(date);
-
-
-        // val end = LocalDateTime.now()
-        //val endTime = formatterTime.format(System.currentTimeMillis())
-//        btn_end.setOnClickListener() {
-//            val endTime = formatterTime.format(System.currentTimeMillis())
-//            btn_end.text = "end at : $endTime"
-//        }
 
     }
 

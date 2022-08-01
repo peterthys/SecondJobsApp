@@ -2,7 +2,7 @@ package com.example.secondjobapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.secondjobapp.db.JobsDatabase
+import com.example.secondjobapp.db.JobsAndClientsDatabase
 import com.example.secondjobapp.other.Constants.JOBS_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -19,14 +19,17 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun povideJobsDatabase(
+    fun provideJobsAndClientsDatabase(
         @ApplicationContext app: Context
     ) = Room.databaseBuilder(
-        app,JobsDatabase::class.java,JOBS_DATABASE_NAME
+        app, JobsAndClientsDatabase::class.java, JOBS_DATABASE_NAME,
     ).build()
 
     @Singleton
     @Provides
-    fun provideJobDao(db : JobsDatabase) = db.getJobsDao()
+    fun provideJobDao(db : JobsAndClientsDatabase) = db.getJobsDao()
+    @Singleton
+    @Provides
+    fun provideClientsDao(db : JobsAndClientsDatabase) = db.getClientsDao()
 
 }

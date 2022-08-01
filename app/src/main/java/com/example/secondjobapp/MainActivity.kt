@@ -21,10 +21,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.secondjobapp.databinding.ActivityMainBinding
+import com.example.secondjobapp.db.Client
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_clients.*
+import kotlinx.android.synthetic.main.fragment_new_client.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -39,18 +41,13 @@ class MainActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        dateText = findViewById(R.id.text_date)
-
-        val formatter = DateTimeFormatter.ofPattern("dd-mm-YYYY HH:mm:ss")
-        val dateOfJob = formatter.format(LocalDateTime.now())
-
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.navHostFragment)
         bottomNavigationView.setupWithNavController(navController)
 
 
-        dateText.text = "Hallo"
+
         setSupportActionBar(toolbar)
 
         bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
@@ -59,17 +56,23 @@ class MainActivity() : AppCompatActivity() {
             }
 
 
-        //      var clientList = mutableListOf(
-        //          Client("Peter", "Putte", "032"),
-        //          Client("Wouter", "Heultje", "025")
-        //      )
-//        val adaptor = ClientsAdaptor(clientList)
-//        rv_clients.adapter = adaptor
-//        rv_clients.layoutManager = LinearLayoutManager(this)
+              val clientList = mutableListOf(
+                  Client("Peter", "Putte", "032"),
+                  Client("Wouter", "Heultje", "025")
+              )
+        val adapter = ClientsAdaptor(clientList)
+        rv_clients.adapter = adapter
+        rv_clients.layoutManager = LinearLayoutManager(this)
 
-//        bt_make_new_client.setOnClickListener(){
-//            navHostFragment.findNavController().navigate(R.id.action_clientsFragment_to_newClient)
-//        }
+        bt_make_new_client.setOnClickListener(){
+            navHostFragment.findNavController().navigate(R.id.action_clientsFragment_to_newClient)
+            val name = et_newClientName.text.toString()
+            val adress = et_newClientAdress.text.toString()
+            val phoneNumber : String = et_newClientPhone.text.toString()
+            val newClient = Client(name,adress,phoneNumber)
+            clientList.add(newClient)
+            adapter.notifyItemInserted(clientList.size-1)
+        }
 
     }
 }
