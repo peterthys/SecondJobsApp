@@ -60,19 +60,19 @@ class MainActivity() : AppCompatActivity() {
                   Client("Peter", "Putte", "032"),
                   Client("Wouter", "Heultje", "025")
               )
-        val adapter = ClientsAdaptor(clientList)
-        rv_clients.adapter = adapter
-        rv_clients.layoutManager = LinearLayoutManager(this)
-
-        bt_make_new_client.setOnClickListener(){
-            navHostFragment.findNavController().navigate(R.id.action_clientsFragment_to_newClient)
-            val name = et_newClientName.text.toString()
-            val adress = et_newClientAdress.text.toString()
-            val phoneNumber : String = et_newClientPhone.text.toString()
-            val newClient = Client(name,adress,phoneNumber)
-            clientList.add(newClient)
-            adapter.notifyItemInserted(clientList.size-1)
-        }
+//        val adapter = ClientsAdaptor(clientList)
+//        rv_clients.adapter = adapter
+//        rv_clients.layoutManager = LinearLayoutManager(this)
+//
+//        bt_make_new_client.setOnClickListener(){
+//            navHostFragment.findNavController().navigate(R.id.action_clientsFragment_to_newClient)
+//            val name = et_newClientName.text.toString()
+//            val adress = et_newClientAdress.text.toString()
+//            val phoneNumber : String = et_newClientPhone.text.toString()
+//            val newClient = Client(name,adress,phoneNumber)
+//            clientList.add(newClient)
+//            adapter.notifyItemInserted(clientList.size-1)
+  //      }
 
     }
 }
