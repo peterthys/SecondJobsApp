@@ -6,9 +6,11 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.secondjobapp.R
 import com.example.secondjobapp.ui.viewModels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_job.*
 import java.lang.String
 import java.lang.System.currentTimeMillis
@@ -35,7 +37,7 @@ class JobFragment : Fragment(R.layout.fragment_job) {
         val dateOfJob = formatterDate.format(LocalDateTime.now())
         text_date.text = "$dateOfJob"
 
-        btn_start.setOnClickListener() {
+        btn_start.setOnClickListener {
 
             val formatTime = SimpleDateFormat("HH:mm:ss")
             startTime = currentTimeMillis()
@@ -43,7 +45,7 @@ class JobFragment : Fragment(R.layout.fragment_job) {
             btn_start.text = "start at $formattedStartTime"
         }
 
-        btn_end.setOnClickListener() {
+        btn_end.setOnClickListener {
             val formatTime = SimpleDateFormat("HH:mm:ss")
             endTime = currentTimeMillis()
             val formattedEndTime = formatTime.format(endTime)
@@ -59,11 +61,15 @@ class JobFragment : Fragment(R.layout.fragment_job) {
 
 
         }
-
+        btn_choose_client.setOnClickListener {
+            navHostFragment.findNavController().navigate(R.id.action_jobFragment_to_clientsFragment)
+        }
+        fun lachErEensMee(){
+            val a = 1
+        }
 
 
     }
-
 
 
 }

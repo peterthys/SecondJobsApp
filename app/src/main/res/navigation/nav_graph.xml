@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/newClient"
-        android:name="com.example.secondjobapp.NewClient"
+        android:name="com.example.secondjobapp.ui.fragments.NewClient"
         android:label="fragment_new_client"
         tools:layout="@layout/fragment_new_client" >
         <action
