@@ -63,11 +63,7 @@ class NewClient : Fragment(R.layout.fragment_new_client) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        return super.onCreateView(
-//            inflater,
-//            container,
-//            savedInstanceState
-//        )
+
 
         _binding = FragmentNewClientBinding.inflate(inflater, container, false)
 
