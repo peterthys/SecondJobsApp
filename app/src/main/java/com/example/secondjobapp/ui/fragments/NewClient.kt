@@ -18,12 +18,11 @@ import com.example.secondjobapp.ui.viewModels.MainViewModel
 import com.example.secondjobapp.ui.viewModels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_new_client.*
 
 @AndroidEntryPoint
 class NewClient : Fragment(R.layout.fragment_new_client) {
-    private var _binding : FragmentNewClientBinding? = null
-    private val binding get () = _binding!!
+    private var _binding: FragmentNewClientBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
@@ -34,7 +33,6 @@ class NewClient : Fragment(R.layout.fragment_new_client) {
 
         val clientsList = mutableListOf<Client>()
         val adapter = ClientsAdaptor(clientsList)
-
 
 
 //        btn_addNewClientToList.setOnClickListener {
@@ -68,11 +66,23 @@ class NewClient : Fragment(R.layout.fragment_new_client) {
         _binding = FragmentNewClientBinding.inflate(inflater, container, false)
 
 
-        sharedViewModel.country.observe(viewLifecycleOwner, { country ->
-            binding.etNewClientName.setText(country)
+        sharedViewModel.clientsName.observe(viewLifecycleOwner, { name: String ->
+            binding.etNewClientName.setText(name)
         })
-        binding.btnAddNewClientToList.setOnClickListener{
-            sharedViewModel.saveCountry(binding.etNewClientName.text.toString())
+
+        sharedViewModel.clientsAdress.observe(viewLifecycleOwner, { adress: String ->
+            binding.etNewClientAdress.setText(adress)
+        })
+
+        sharedViewModel.clientsPhone.observe(viewLifecycleOwner, { phone: String ->
+            binding.etNewClientPhone.setText(phone)
+        })
+        binding.btnAddNewClientToList.setOnClickListener {
+            sharedViewModel.saveNewClient(
+                binding.etNewClientName.text.toString(),
+                binding.etNewClientAdress.text.toString(),
+                binding.etNewClientPhone.text.toString()
+            )
             navHostFragment.findNavController()
                 .navigate(R.id.action_newClient_to_clientsFragment)
         }

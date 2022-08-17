@@ -1,5 +1,6 @@
 package com.example.secondjobapp.repositories
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import com.example.secondjobapp.db.Client
 import com.example.secondjobapp.db.ClientsDAO
@@ -18,5 +19,6 @@ class MainRepository @Inject constructor(
     suspend fun insertClient (client: Client) = clientsDAO.insertClient(client)
     suspend fun deleteClient (client: Client) = clientsDAO.deleteClient(client)
     fun getAllClients() = clientsDAO.getAllClients()
+    var clientList : LiveData<List<Client>> = clientsDAO.getAllClients()
 
 }

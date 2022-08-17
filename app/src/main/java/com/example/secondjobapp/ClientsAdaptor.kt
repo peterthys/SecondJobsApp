@@ -9,7 +9,7 @@ import com.example.secondjobapp.db.Client
 import kotlinx.android.synthetic.main.item_client.view.*
 
 class ClientsAdaptor(
-    var clientsList: List<Client>
+    var clientsList: LiveData<List<Client>>
 ) : RecyclerView.Adapter<ClientsAdaptor.ClientsViewholder>() {
     inner class ClientsViewholder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
