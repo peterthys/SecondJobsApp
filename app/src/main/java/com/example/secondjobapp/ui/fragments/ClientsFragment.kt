@@ -33,10 +33,9 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
     private var _binding: FragmentClientsBinding? = null
     private val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels()
-    val clientsList = mutableListOf(
-        Client("Peter", "Putte", "032"),
-        Client("Wouter", "Heultje", "025")
-    )
+    val clientsList = sharedViewModel.clientList
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,13 +49,15 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
 
         sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
             binding.etNaamvdklant.setText(clientsName)
+            val newClient = Client(clientsName,"put","123")
+            clientsList.add(newClient)
         })
         binding.btMakeNewClient.setOnClickListener {
             navHostFragment.findNavController()
                 .navigate(R.id.action_clientsFragment_to_newClient)
         }
-
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,6 +90,7 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
             adapter.notifyItemInserted(clientsList.size - 1)
 
         }
+
 
     }
     override fun onDestroyView() {

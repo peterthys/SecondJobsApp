@@ -64,9 +64,9 @@ class JobFragment : Fragment(R.layout.fragment_job) {
         btn_choose_client.setOnClickListener {
             navHostFragment.findNavController().navigate(R.id.action_jobFragment_to_clientsFragment)
         }
-        fun lachErEensMee(){
-            val a = 1
-        }
+//        fun lachErEensMee(){
+//            val a = 1
+//        }
 
 
     }
