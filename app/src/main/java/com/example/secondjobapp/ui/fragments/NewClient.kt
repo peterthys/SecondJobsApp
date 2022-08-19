@@ -68,8 +68,8 @@ class NewClient : Fragment(R.layout.fragment_new_client) {
         _binding = FragmentNewClientBinding.inflate(inflater, container, false)
 
 
-        sharedViewModel.country.observe(viewLifecycleOwner, { country ->
-            binding.etNewClientName.setText(country)
+        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
+            binding.etNewClientName.setText(clientsName)
         })
         binding.btnAddNewClientToList.setOnClickListener{
             sharedViewModel.saveCountry(binding.etNewClientName.text.toString())

@@ -33,7 +33,10 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
     private var _binding: FragmentClientsBinding? = null
     private val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels()
-
+    val clientsList = mutableListOf(
+        Client("Peter", "Putte", "032"),
+        Client("Wouter", "Heultje", "025")
+    )
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,11 +48,10 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
         _binding = FragmentClientsBinding.inflate(inflater, container, false)
 
 
-        sharedViewModel.country.observe(viewLifecycleOwner, { country ->
-            binding.etNaamvdklant.setText(country)
+        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
+            binding.etNaamvdklant.setText(clientsName)
         })
         binding.btMakeNewClient.setOnClickListener {
-//            sharedViewModel.saveCountry(binding.etNaamvdklant.text.toString())
             navHostFragment.findNavController()
                 .navigate(R.id.action_clientsFragment_to_newClient)
         }
@@ -61,16 +63,17 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val clientsList = mutableListOf(
-            Client("Peter", "Putte", "032"),
-            Client("Wouter", "Heultje", "025")
-        )
+//        val clientsList = mutableListOf(
+//            Client("Peter", "Putte", "032"),
+//            Client("Wouter", "Heultje", "025")
+//        )
 
 
         val adapter = ClientsAdaptor(clientsList)
         rv_clients.adapter = adapter
         rv_clients.layoutManager = LinearLayoutManager(context)
         //  rv_clients.setOnClickListener(context)
+
         bt_make_new_client.setOnClickListener {
 
 

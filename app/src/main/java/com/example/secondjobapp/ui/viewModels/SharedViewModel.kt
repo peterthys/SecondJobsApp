@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 
 class SharedViewModel : ViewModel() {
 
-    private var _country = MutableLiveData("Serbia")
-    val country: LiveData<String> = _country
-    fun saveCountry(newCountry : String){
-        _country.value = newCountry
+    private var _clientsName = MutableLiveData("")
+    val clientsName: LiveData<String> = _clientsName
+    fun saveCountry(newClientsName : String){
+        _clientsName.value = newClientsName
     }
 }
