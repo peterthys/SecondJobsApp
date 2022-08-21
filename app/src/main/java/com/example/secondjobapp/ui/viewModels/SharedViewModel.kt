@@ -3,21 +3,30 @@ package com.example.secondjobapp.ui.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.secondjobapp.db.Client
+import com.example.secondjobapp.repositories.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SharedViewModel : ViewModel() {
+@HiltViewModel
+class SharedViewModel @Inject constructor(
+    val mainRepository: MainRepository
+) : ViewModel() {
 
-    private var _clientsName = MutableLiveData("")
-    val clientsName: LiveData<String> = _clientsName
-    val clientList = mutableListOf(
-        Client("Peter", "Putte", "032"),
-        Client("Wouter", "Heultje", "025")
-    )
+   var client = Client("","","")
 
-    fun saveCountry(newClientsName : String){
-        _clientsName.value = newClientsName
-        val newClient = Client(newClientsName,"put","123")
-        clientList.add(newClient)
+    val clientList = mainRepository.getAllClients()
+//        mutableListOf(
+//        Client("Peter", "Putte", "032"),
+//        Client("Wouter", "Heultje", "025")
+//    )
 
+    fun saveClient() {
+        viewModelScope.launch {
+            mainRepository.insertClient(client)
+
+        }
     }
 }

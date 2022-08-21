@@ -33,8 +33,9 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
     private var _binding: FragmentClientsBinding? = null
     private val binding get() = _binding!!
     private val sharedViewModel: SharedViewModel by activityViewModels()
-    val clientsList = sharedViewModel.clientList
 
+    //    val clientsList = sharedViewModel.clientList
+    private val adaptor = ClientsAdaptor()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -46,12 +47,15 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
 
         _binding = FragmentClientsBinding.inflate(inflater, container, false)
 
+        sharedViewModel.clientList.observe(viewLifecycleOwner, {
+            adaptor.updateList(it)
 
-        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
-            binding.etNaamvdklant.setText(clientsName)
-            val newClient = Client(clientsName,"put","123")
-            clientsList.add(newClient)
         })
+//        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
+//            binding.etNaamvdklant.setText(clientsName)
+//            val newClient = Client(clientsName,"put","123")
+//            sharedViewModel.clientList.add(newClient)
+        //     })
         binding.btMakeNewClient.setOnClickListener {
             navHostFragment.findNavController()
                 .navigate(R.id.action_clientsFragment_to_newClient)
@@ -70,8 +74,8 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
 //        )
 
 
-        val adapter = ClientsAdaptor(clientsList)
-        rv_clients.adapter = adapter
+ //       val adapter = ClientsAdaptor(sharedViewModel.clientList)
+        rv_clients.adapter = adaptor
         rv_clients.layoutManager = LinearLayoutManager(context)
         //  rv_clients.setOnClickListener(context)
 
@@ -79,20 +83,21 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
 
 
             navHostFragment.findNavController().navigate(R.id.action_clientsFragment_to_newClient)
-            val name = et_naamvdklant.text.toString()
-            val client = Client(name, "hollebolle", "007")
-            clientsList.add(client)
+//            val name = et_naamvdklant.text.toString()
+//            val client = Client(name, "hollebolle", "007")
+//            sharedViewModel.clientList.add(client)
 //            val name = et_newClientName.text.toString()
 //            val adress = et_newClientAdress.text.toString()
 //            val phoneNumber : String = et_newClientPhone.text.toString()
 //            val newClient = Client(name,adress,phoneNumber)
 //            clientList.add(newClient)
-            adapter.notifyItemInserted(clientsList.size - 1)
+            //          adapter.notifyItemInserted(sharedViewModel.clientList.size - 1)
 
         }
 
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

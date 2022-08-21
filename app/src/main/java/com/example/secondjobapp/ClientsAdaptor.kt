@@ -6,15 +6,36 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.secondjobapp.db.Client
+import com.github.mikephil.charting.utils.Utils.init
 import kotlinx.android.synthetic.main.item_client.view.*
 
 class ClientsAdaptor(
-    var clientsList: List<Client>
+    // var clientsList: List<Client>
 ) : RecyclerView.Adapter<ClientsAdaptor.ClientsViewholder>() {
-    inner class ClientsViewholder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    private lateinit var mListener: onItemClickListener
+    var clientsList: List<Client> = listOf()
+
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener) {
+
+        mListener = listener
+
+    }
+
+    inner class ClientsViewholder(
+        itemView: View, //listener: onItemClickListener
+    ) :
+        RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientsViewholder {
+
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_client, parent, false)
+
         return ClientsViewholder(view)
     }
 
@@ -32,5 +53,8 @@ class ClientsAdaptor(
         return clientsList.size
     }
 
-
+    fun updateList(list: List<Client>) {
+        clientsList = list
+        notifyDataSetChanged()
+    }
 }

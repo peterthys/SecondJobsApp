@@ -22,41 +22,17 @@ import kotlinx.android.synthetic.main.fragment_new_client.*
 
 @AndroidEntryPoint
 class NewClient : Fragment(R.layout.fragment_new_client) {
-    private var _binding : FragmentNewClientBinding? = null
-    private val binding get () = _binding!!
+    private var _binding: FragmentNewClientBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-        val clientsList = mutableListOf<Client>()
-        val adapter = ClientsAdaptor(clientsList)
-
-
-
-//        btn_addNewClientToList.setOnClickListener {
-//            @Override
-//            fun onClick(view: View) {
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
 //
 //
-//                val name = et_newClientName.text.toString()
-//                val adress = et_newClientAdress.text.toString()
-//                val phoneNumber: String = et_newClientPhone.text.toString()
-//                val newClient = Client(name, adress, phoneNumber)
-//                clientsList.add(newClient)
-//                adapter.notifyItemInserted(clientsList.size - 1)
-//                navHostFragment.findNavController()
-//                    .navigate(R.id.action_newClient_to_clientsFragment)
-//            }
-//
-//
-//        }
-
-
-    }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,13 +42,16 @@ class NewClient : Fragment(R.layout.fragment_new_client) {
 
 
         _binding = FragmentNewClientBinding.inflate(inflater, container, false)
+        binding.etNewClientName.setText(sharedViewModel.client.name)
 
-
-        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
-            binding.etNewClientName.setText(clientsName)
-        })
-        binding.btnAddNewClientToList.setOnClickListener{
-            sharedViewModel.saveCountry(binding.etNewClientName.text.toString())
+//        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
+//            binding.etNewClientName.setText(clientsName)
+//        })
+        binding.btnAddNewClientToList.setOnClickListener {
+            sharedViewModel.client.name = binding.etNewClientName.text.toString()
+            sharedViewModel.client.adress = binding.etNewClientAdress.text.toString()
+            sharedViewModel.client.phoneNumber = binding.etNewClientPhone.text.toString()
+            sharedViewModel.saveClient()
             navHostFragment.findNavController()
                 .navigate(R.id.action_newClient_to_clientsFragment)
         }

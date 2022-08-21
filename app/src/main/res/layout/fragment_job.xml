@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,9 +24,9 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/btn_end"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <Button
             android:id="@+id/btn_start"
@@ -34,21 +35,22 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="8dp"
+            android:backgroundTint="#8BC34A"
             android:text="start job "
             android:textAlignment="center"
             android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@id/text_result"
             app:layout_constraintEnd_toStartOf="@id/btn_end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <Button
             android:id="@+id/btn_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="8dp"
+            android:backgroundTint="#8BC34A"
             android:text="end job"
             android:textAlignment="center"
             android:textSize="15sp"
@@ -72,37 +74,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_start" />
 
+
         <TextView
             android:id="@+id/tv_pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="50dp"
-            android:text="length of pause : "
+            android:text="length of pause in minutes : "
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_choose_client"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@id/text_result" />
-
 
         <Button
             android:id="@+id/btn_choose_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:backgroundTint="#8BC34A"
             android:text="choose or create client"
             android:textAlignment="center"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@id/tv_pause"
-
             app:layout_constraintVertical_bias="0.0" />
+
+        <NumberPicker
+            android:id="@+id/np_pause_lenght"
+            android:layout_width="40dp"
+            android:layout_height="120dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_choose_client"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_pause"
+            app:layout_constraintTop_toBottomOf="@+id/text_result" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

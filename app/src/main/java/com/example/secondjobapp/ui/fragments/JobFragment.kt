@@ -26,7 +26,7 @@ class JobFragment : Fragment(R.layout.fragment_job) {
 
     private var startTime: Long = 0L
     private var endTime: Long = 0L
-
+    private var pause: Int = 30
     private val viewModel: MainViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -61,9 +61,20 @@ class JobFragment : Fragment(R.layout.fragment_job) {
 
 
         }
-        btn_choose_client.setOnClickListener {
-            navHostFragment.findNavController().navigate(R.id.action_jobFragment_to_clientsFragment)
+        val numberPicker = np_pause_lenght
+        numberPicker.minValue = 0
+        numberPicker.maxValue = 60
+        numberPicker.value = 30
+
+        numberPicker.setOnValueChangedListener { numberPicker, oldValue, newValue ->
+            pause = newValue
         }
+
+        btn_choose_client.setOnClickListener {
+            navHostFragment.findNavController()
+                .navigate(R.id.action_jobFragment_to_clientsFragment)
+        }
+
 //        fun lachErEensMee(){
 //            val a = 1
 //        }
