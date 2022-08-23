@@ -27,26 +27,15 @@ class NewClient : Fragment(R.layout.fragment_new_client) {
     private val viewModel: MainViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentNewClientBinding.inflate(inflater, container, false)
         binding.etNewClientName.setText(sharedViewModel.client.name)
 
-//        sharedViewModel.clientsName.observe(viewLifecycleOwner, { clientsName ->
-//            binding.etNewClientName.setText(clientsName)
-//        })
         binding.btnAddNewClientToList.setOnClickListener {
             sharedViewModel.client.name = binding.etNewClientName.text.toString()
             sharedViewModel.client.adress = binding.etNewClientAdress.text.toString()

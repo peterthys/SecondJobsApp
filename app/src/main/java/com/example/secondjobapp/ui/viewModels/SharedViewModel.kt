@@ -15,13 +15,9 @@ class SharedViewModel @Inject constructor(
     val mainRepository: MainRepository
 ) : ViewModel() {
 
-   var client = Client("","","")
+    var client = Client("", "", "")
 
     val clientList = mainRepository.getAllClients()
-//        mutableListOf(
-//        Client("Peter", "Putte", "032"),
-//        Client("Wouter", "Heultje", "025")
-//    )
 
     fun saveClient() {
         viewModelScope.launch {
