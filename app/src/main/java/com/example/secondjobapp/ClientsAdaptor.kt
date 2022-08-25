@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.secondjobapp.db.Client
 import com.github.mikephil.charting.utils.Utils.init
-import hilt_aggregated_deps._com_example_secondjobapp_ui_fragments_ClientsFragment_GeneratedInjector
+//import hilt_aggregated_deps._com_example_secondjobapp_ui_fragments_ClientsFragment_GeneratedInjector
 import kotlinx.android.synthetic.main.item_client.view.*
 
 class ClientsAdaptor(
@@ -51,12 +51,11 @@ class ClientsAdaptor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientsViewholder {
 
-
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_client, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_client,
+            parent, false)
 
         return ClientsViewholder(view)
     }
-
 
     override fun onBindViewHolder(holder: ClientsViewholder, position: Int) {
         holder.itemView.apply {
