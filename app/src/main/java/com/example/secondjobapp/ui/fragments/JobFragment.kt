@@ -2,12 +2,17 @@ package com.example.secondjobapp.ui.fragments
 
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.secondjobapp.R
+import com.example.secondjobapp.databinding.FragmentJobBinding
+import com.example.secondjobapp.databinding.FragmentNewClientBinding
 import com.example.secondjobapp.ui.viewModels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,19 +28,46 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class JobFragment : Fragment(R.layout.fragment_job) {
 
-
+    private var _binding: FragmentJobBinding? = null
+    private val binding get() = _binding!!
+    private var dateOfTheJob = 0L
     private var startTime: Long = 0L
     private var endTime: Long = 0L
     private var pause: Int = 30
-    private val viewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding = FragmentJobBinding.inflate(inflater, container, false)
+    //    binding.etNewClientName.setText(mainViewModel.client.name)
+
+        binding.btSaveJob.setOnClickListener {
+            mainViewModel.job.dateOfTheJob = dateOfTheJob
+            mainViewModel.job.startTime = startTime
+            mainViewModel.job.endTime = endTime
+            mainViewModel.job.pause = pause
+            mainViewModel.job.client = btn_choose_client.text.toString()
+            mainViewModel.job.result = "{$endTime-$startTime-$(pause*60000)"
+            mainViewModel.saveJob()
+            navHostFragment.findNavController()
+                .navigate(R.id.action_jobFragment_to_overviewFragment)
+        }
+
+        return binding.root
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val formatterDate = DateTimeFormatter.ofPattern("dd-MM-YYYY")
-        val dateOfJob = formatterDate.format(LocalDateTime.now())
-        text_date.text = "$dateOfJob"
+        val formatterDate = SimpleDateFormat("dd:MM:yyyy")
+         dateOfTheJob = currentTimeMillis()
+        val dateOfJobFormatted = formatterDate.format(dateOfTheJob)
+        text_date.text = "$dateOfJobFormatted"
 
         btn_start.setOnClickListener {
 

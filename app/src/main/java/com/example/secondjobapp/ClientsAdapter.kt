@@ -3,18 +3,15 @@ package com.example.secondjobapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.secondjobapp.db.Client
-import com.github.mikephil.charting.utils.Utils.init
 //import hilt_aggregated_deps._com_example_secondjobapp_ui_fragments_ClientsFragment_GeneratedInjector
 import kotlinx.android.synthetic.main.item_client.view.*
 
-class ClientsAdaptor(
+class ClientsAdapter(
     private val listener: OnItemClickListener
     // var clientsList: List<Client>
-) : RecyclerView.Adapter<ClientsAdaptor.ClientsViewholder>() {
+) : RecyclerView.Adapter<ClientsAdapter.ClientsViewholder>() {
 
     private lateinit var mListener: onItemClickListener
     var clientsList: List<Client> = listOf()

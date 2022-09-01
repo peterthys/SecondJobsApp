@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Job::class, Client::class],
-    version = 2
+    version = 4
 )
 abstract class JobsAndClientsDatabase : RoomDatabase() {
 
