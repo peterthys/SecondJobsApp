@@ -49,15 +49,18 @@ class MainActivity : AppCompatActivity() {
         val clientsFragment = ClientsFragment()
         val overViewFragment = OverviewFragment()
         val jobFragment = JobFragment()
-setCurentFragment(jobFragment)
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.jobFragment -> setCurentFragment(jobFragment)
-                R.id.clientsFragment -> setCurentFragment(clientsFragment)
-                R.id.overviewFragment -> setCurentFragment(overViewFragment)
-            }
-            true
-        }
+        setCurentFragment(jobFragment)
+//        bottomNavigationView.setOnItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.jobFragment -> setCurentFragment(jobFragment)
+//                R.id.clientsFragment -> setCurentFragment(clientsFragment)
+//                R.id.overviewFragment -> setCurentFragment(overViewFragment)
+//            }
+//            true
+//        }
+        val bottomNavigationView=findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val navController = findNavController(R.id.navHostFragment)
+        bottomNavigationView.setupWithNavController(navController)
     }
 
     private fun setCurentFragment(fragment: Fragment) =

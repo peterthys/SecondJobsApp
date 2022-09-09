@@ -9,6 +9,7 @@ import com.example.secondjobapp.databinding.ItemJobBinding
 import com.example.secondjobapp.db.Job
 import com.example.secondjobapp.ui.fragments.OverviewFragment
 import kotlinx.android.synthetic.main.item_job.view.*
+import java.text.SimpleDateFormat
 
 class JobsAdapter(
     private val listener: OverviewFragment
@@ -33,11 +34,20 @@ class JobsAdapter(
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         with(holder) {
             with(jobsList[position]) {
-                itemBinding.tvJobDate2.text = this.dateOfTheJob.toString()
+                val formatterDate = SimpleDateFormat("dd:MM:yyyy")
+                val dateOfJobFormatted = formatterDate.format(dateOfTheJob)
+                itemBinding.tvJobDate2.text = dateOfJobFormatted.toString()
                 itemBinding.tvJobClient2.text = this.client
-                itemBinding.tvJobEnd2.text = this.endTime.toString()
+                val formatTime = SimpleDateFormat("HH:mm")
+                val formattedStartTime = formatTime.format(startTime)
+                val formattedEndTime = formatTime.format(endTime)
+                itemBinding.tvJobStart2.text = formattedStartTime.toString()
+                itemBinding.tvJobEnd2.text = formattedEndTime.toString()
                 itemBinding.tvJobPause2.text = this.pause.toString()
-                itemBinding.tvJobStart2.text = this.startTime.toString()
+                val  difference = endTime-startTime
+                val minutes = difference/60000
+                val hours = minutes/60
+                result = "$hours h : $minutes min"
                 itemBinding.tvJobResult2.text = this.result
             }
         }
