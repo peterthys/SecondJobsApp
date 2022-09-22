@@ -18,5 +18,6 @@ interface ClientsDAO {
     @Query("SELECT * FROM clients_table ORDER BY NAME ASC")
     fun getAllClients(): LiveData<List<Client>>
 
-
+@Update
+suspend fun updateClient(client: Client)
 }

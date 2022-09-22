@@ -20,6 +20,7 @@ import com.example.secondjobapp.ui.viewModels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_clients.*
+import kotlinx.android.synthetic.main.item_client.*
 
 
 @AndroidEntryPoint
@@ -65,6 +66,9 @@ class ClientsFragment : Fragment(R.layout.fragment_clients),ClientsAdapter.OnIte
             navHostFragment.findNavController().navigate(R.id.action_clientsFragment_to_newClient)
 
         }
+//        binding.ivDeleteClient.setOnClickListener(){
+//            sharedViewModel.deleteClient()
+//        }
 
     }
 

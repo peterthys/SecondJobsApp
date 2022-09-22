@@ -1,7 +1,5 @@
 package com.example.secondjobapp.ui.viewModels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.secondjobapp.db.Client
@@ -23,6 +21,17 @@ class SharedViewModel @Inject constructor(
         viewModelScope.launch {
             mainRepository.insertClient(client)
 
+        }
+    }
+    fun deleteClient() {
+        viewModelScope.launch {
+            mainRepository.deleteClient(client)
+
+        }
+    }
+    fun updateClient(updatedClient: Client) {
+        viewModelScope.launch {
+            mainRepository.updateClient(client)
         }
     }
 }

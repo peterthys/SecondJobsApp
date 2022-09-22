@@ -9,16 +9,19 @@ import com.example.secondjobapp.db.JobsDAO
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
-    val jobsDAO: JobsDAO,val clientsDAO: ClientsDAO
+    val jobsDAO: JobsDAO, val clientsDAO: ClientsDAO
 ) {
-    suspend fun insertJob (job: Job) = jobsDAO.insertJob(job)
-    suspend fun deleteJob (job: Job) = jobsDAO.deleteJob(job)
+    suspend fun insertJob(job: Job) = jobsDAO.insertJob(job)
+    suspend fun deleteJob(job: Job) = jobsDAO.deleteJob(job)
     fun getAllJobsSortedByClient() = jobsDAO.getAllJobsSortedByClient()
     fun getAllJobsSortedByDate() = jobsDAO.getAllJobsSortedByDate()
 
-    suspend fun insertClient (client: Client) = clientsDAO.insertClient(client)
-    suspend fun deleteClient (client: Client) = clientsDAO.deleteClient(client)
+    suspend fun insertClient(client: Client) = clientsDAO.insertClient(client)
+    suspend fun deleteClient(client: Client) = clientsDAO.deleteClient(client)
     fun getAllClients() = clientsDAO.getAllClients()
-  //  var clientList : LiveData<List<Client>> = clientsDAO.getAllClients()
 
+    //  var clientList : LiveData<List<Client>> = clientsDAO.getAllClients()
+    suspend fun updateClient(client: Client) {
+        clientsDAO.updateClient(client)
+    }
 }

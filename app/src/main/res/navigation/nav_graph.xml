@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_clientsFragment_to_overviewFragment"
             app:destination="@id/overviewFragment" />
+        <action
+            android:id="@+id/action_clientsFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobFragment"
@@ -49,5 +52,17 @@
         <action
             android:id="@+id/action_newClient_to_clientsFragment"
             app:destination="@id/clientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.secondjobapp.ui.fragments.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <argument
+            android:name="currentClient"
+            app:argType="com.example.secondjobapp.db.Client" />
     </fragment>
 </navigation>
